@@ -5,6 +5,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 require '../vendor/autoload.php';
 require '../src/config/db.php';
 
+
 //-----log
 // use \Monolog\Logger;
 // use \Monolog\Handler\StreamHandler;
@@ -14,7 +15,8 @@ require '../src/config/db.php';
 
 
 
-//-----
+//------------------------------------------------
+
 // $app = new \Slim\App;
 $config = ['settings' => [
     'addContentLengthHeader' => false,
@@ -40,7 +42,8 @@ require '../src/routes/upload.php';
 
 //--------------routes
 $app->get('/', function ($request, $response, $args) {
-	$response->getBody()->write('Hello World');
+    $response->getBody()->write('Hello World');
+    
 	return $response;
 });
 
@@ -93,14 +96,16 @@ $app->get('/test3', function ($request, $response) {
     }
 
 });
+
+//get metadata
 $app->get('/test4', function ($request, $response) {
     $body = $request->getBody();
     echo '<pre>';
     print_r($body->getMetadata());
 });
 
-
-$app->get('/test5', function ($request, $response) {
+//php render
+$app->get('/render1', function ($request, $response) {
     $params = $request->getQueryParams();
 
     // $response->write('<pre>');
@@ -111,7 +116,6 @@ $app->get('/test5', function ($request, $response) {
     include '../src/page/phpinfo.php';
 
 });
-
 
 
 

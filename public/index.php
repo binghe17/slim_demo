@@ -100,5 +100,20 @@ $app->get('/test4', function ($request, $response) {
 });
 
 
+$app->get('/test5', function ($request, $response) {
+    $params = $request->getQueryParams();
+
+    // $response->write('<pre>');
+    // $response->write(print_r( $GLOBALS ));
+    // $response->write(print_r( $params ));
+    
+    // $response->write(print_r( $params ));
+    include '../src/page/phpinfo.php';
+
+});
+
+
+
+
 
 $app->run();

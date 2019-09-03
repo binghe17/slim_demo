@@ -1,1 +1,0 @@
-[test] http://localhost/test/restfullPhp-master/public/api/v1/customers

@@ -117,7 +117,12 @@ $app->get('/render1', function ($request, $response) {
 
 });
 
-
+$app->get('/redirect', function ($req, $res, $args) {
+    // return $res->withStatus(302);
+    return $res->withHeader('Location', 'render1');
+    // return $res->withHeader('Location', 'https://naver.com');
+    // return $res->withRedirect('https://naver.com');
+});
 
 
 $app->run();

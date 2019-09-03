@@ -13,7 +13,8 @@ if(!isset($app)) $app = new \Slim\App();
 $container = $app->getContainer();
 
 
-//-------------------Twig-View 
+//==================Twig-View 방식
+
 $container['view'] = function ($container) {
     $conf = [];
     // $conf['cache'] =  __DIR__.'/../templates/cache'; //캐시함
@@ -24,8 +25,7 @@ $container['view'] = function ($container) {
     return $view;
 };
 
-//---
-
+//---함수정의
 $environ = $container->get('view')->getEnvironment();
 $environ->addFunction(new Twig_SimpleFunction('shortest', function ($a, $b) {
     return strlen($a) <= strlen($b) ? $a : $b;
@@ -35,19 +35,20 @@ $environ->addFunction(new Twig_SimpleFunction('length', function ($a) {
 }));
 
 
-
-//--------
+//---route
 
 $app->get('/upload2/{name}', function ($request, $response, $args) {
     $args['other'] = 'other';
     return $this->view->render($response, 'upload2.html',  $args);
 })->setName('profile');
+//TEST http://localhost/test/restfullPhp-master/public/upload2/asdf
 
 
 
 
 
-//-------------------PHP-View 
+//==================PHP-View 방식
+
 // $container['upload_directory'] =  __DIR__. '/../../public/uploads';
 // $container['view'] = function ($container) {
 //     return new \Slim\Views\PhpRenderer( __DIR__.'/../templates/');
@@ -70,7 +71,7 @@ $app->get('/upload2/{name}', function ($request, $response, $args) {
 // //TEST http://localhost/test/restfullPhp-master/public/upload?name=file1&other=asdf
 
 
-//----------------------
+//======================
 $app->post('/upload', function(Request $request, Response $response) {
     // $headers = $request->getHeaders();
     // foreach ($headers as $name => $values) {

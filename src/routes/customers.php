@@ -2,7 +2,7 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app = new \Slim\App;
+if(!isset($app)) $app = new \Slim\App();
 
 $app ->get('/api/v1/customers', function(Request $req, Response $res){
     $sql = "select * from CUSTOMERS;";

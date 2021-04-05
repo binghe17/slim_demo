@@ -4,7 +4,7 @@
         private $dbhost = 'localhost';
         private $dbuser = 'root';
         private $dbpass = '';
-        private $dbname = 'apiphp';
+        private $dbname = 'slim';
         //cnnect
         public function connect ( ){
             $mysql_connect_str = "mysql:host=$this->dbhost;dbname=$this->dbname;";

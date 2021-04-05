@@ -25,8 +25,9 @@ $app = new \Slim\App($config);
 
 //주의: require는 routes정의 하기전에 해야 함.
 require '../src/routes/customers.php';
-require '../src/routes/test.php'; 
 require '../src/routes/upload.php'; 
+require '../src/routes/test.php'; 
+require '../src/routes/restfull.php'; 
 
 
 
